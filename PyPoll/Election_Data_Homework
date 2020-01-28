@@ -1,0 +1,100 @@
+import os
+import csv
+
+
+csvpath = 'election_data.csv'
+
+#  * The total number of votes cast
+
+#  * A complete list of candidates who received votes
+
+#  * The percentage of votes each candidate won
+
+#  * The total number of votes each candidate won
+
+#  * The winner of the election based on popular vote.
+
+
+
+count_voter = 0
+
+with open(csvpath, newline="") as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=",")
+    
+    next(csvreader)
+    
+    for row in csvreader:
+        
+        # calculate the total # of votes
+        
+        count_voter = count_voter + 1
+        
+print("# of votes: " , count_voter)
+
+#---------------
+
+count_voter = 0
+
+candidate_list = []
+    
+csvpath = 'election_data.csv'
+
+with open(csvpath, newline="") as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=",")
+    
+    next(csvreader)
+   
+    for rows in csvreader:
+        count_voter = count_voter + 1
+        candidate_names = rows[2]
+        candidate_list.append(candidate_names)
+    #print(count_voter) would show how many votes there were total
+    unique_names = list(set(candidate_list))
+print(unique_names)
+#--------------
+Khan = 0
+OTooley = 0
+Correy = 0
+Li = 0
+
+with open(csvpath, newline="") as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=",")
+    
+    next(csvreader)
+
+for name in candidate_list:
+    
+    if name == "Khan":
+        Khan = Khan + 1
+    
+    elif name == "OTooley":
+        OTooley = OTooley + 1
+        
+    elif name == "Correy":
+        Correy = Correy + 1
+        
+    elif name == "Li":
+        Li = Li + 1
+        
+name_list = [Khan, OTooley, Correy, Li]
+print(name_list)
+
+#------------------
+
+# % votes
+
+with open(csvpath, newline="") as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=",")
+    
+    next(csvreader)
+
+percentage_list = []
+
+for x in name_list:
+        percentage_list.append((x/count_voter)*100)
+
+print(percentage_list)
+
+#--------------I'm not sure if I understand this question right
+print("Khan is the winner")
+
